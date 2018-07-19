@@ -102,7 +102,7 @@ class DecorationCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 let numberOfRows = CGFloat(ceilf(numberOfCells / numberMaxOfCellsPerRow))
                 let sectionHeight = (numberOfRows * self.itemSize.height) + ((numberOfRows - 1) * self.minimumLineSpacing) + self.headerReferenceSize.height + self.footerReferenceSize.height + self.sectionInset.bottom + self.sectionInset.top
                 
-                self.sectionsWidthOrHeight[NSIndexPath(row: 0, section: sectionNumber)] = sectionHeight
+                self.sectionsWidthOrHeight[NSIndexPath(row: 0, section: sectionNumber)] = numberOfRows > 0 ? sectionHeight : (self.headerReferenceSize.height + self.footerReferenceSize.height)
             }
         } else {
             let collectionViewHeightAvailableForCells = self.collectionViewContentSize.height - self.sectionInset.top - self.sectionInset.bottom
@@ -114,7 +114,7 @@ class DecorationCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 let numberOfColumns = CGFloat(ceilf(numberOfCells / numberMaxOfCellsPerColumn))
                 let sectionWidth = (numberOfColumns * self.itemSize.width) + ((numberOfColumns - 1) * self.minimumLineSpacing) + self.headerReferenceSize.width + self.footerReferenceSize.width + self.sectionInset.left + self.sectionInset.right
                 
-                self.sectionsWidthOrHeight[NSIndexPath(row: 0, section: sectionNumber)] = sectionWidth
+                self.sectionsWidthOrHeight[NSIndexPath(row: 0, section: sectionNumber)] = numberOfColumns > 0 ? sectionWidth : (self.headerReferenceSize.height + self.footerReferenceSize.height)
             }
         }
     }
